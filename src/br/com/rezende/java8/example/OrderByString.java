@@ -1,7 +1,8 @@
 package br.com.rezende.java8.example;
 
+import static java.util.Comparator.comparing;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -19,12 +20,13 @@ public class OrderByString {
 
 		//list.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
 		
-		list.sort(Comparator.comparing(s-> s.length()));
+		list.sort(comparing(s-> s.length()));
+//		list.sort(String.CASE_INSENSITIVE_ORDER);
 		list.forEach(s -> System.out.println(s));
 		
 		//Method references:
 //		list.sort(Comparator.comparing(String::length));
-//		list.forEach(s -> System.out.println(s));
+//		list.forEach(System.out::println);
 		new Thread(() -> System.out.println("Executando um Runnable")).start();
 
 	}

@@ -20,9 +20,7 @@ public class OrderByString {
 
 		Comparator<String> comparator = new ComparatorString();
 		list.sort(comparator);
-		
-		Consumer<String> consumer = new PrintLine();
-		list.forEach(consumer);
+		list.forEach(s -> System.out.println(s));
 	}
 }
 
@@ -35,12 +33,4 @@ class ComparatorString implements Comparator<String> {
 			return 1;
 		return 0;
 	}
-}
-
-class PrintLine implements Consumer<String> {
-	@Override
-	public void accept(String s) {
-		System.out.println(s);		
-	}
-	
 }

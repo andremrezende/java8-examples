@@ -1,9 +1,7 @@
 package br.com.rezende.java8.example;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * 
@@ -17,20 +15,8 @@ public class OrderByString {
 		list.add("Andre Rezende");
 		list.add("Darth Vader");
 		list.add("R2D2");
-
-		Comparator<String> comparator = new ComparatorString();
-		list.sort(comparator);
+		
+		list.sort((s1, s2)-> Integer.compare(s1.length(), s2.length()));
 		list.forEach(s -> System.out.println(s));
-	}
-}
-
-class ComparatorString implements Comparator<String> {
-	@Override
-	public int compare(String s1, String s2) {
-		if (s1.length() < s2.length())
-			return -1;
-		if (s1.length() > s2.length())
-			return 1;
-		return 0;
 	}
 }

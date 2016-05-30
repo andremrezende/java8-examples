@@ -21,6 +21,10 @@ public class OrderByString {
 		
 		list.sort(Comparator.comparing(s-> s.length()));
 		list.forEach(s -> System.out.println(s));
+		
+		//Method references:
+//		list.sort(Comparator.comparing(String::length));
+//		list.forEach(s -> System.out.println(s));
 		new Thread(() -> System.out.println("Executando um Runnable")).start();
 
 	}

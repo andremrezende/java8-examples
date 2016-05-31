@@ -3,6 +3,8 @@ package br.com.rezende.java8.example.streams;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -49,6 +51,15 @@ public class ZooStream {
 		zoo.sort(Comparator.comparing(Animal::getCount));
 		int sum = zoo.stream().filter(a -> a.getCount() > 100).mapToInt(a -> a.getCount()).sum();
 		System.out.println("Sum >> " + sum);
+		
+		System.out.println();
+		//Using optionals
+		Optional<Animal> animalsGT50 = zoo.parallelStream().filter(a -> a.getCount() > 50).findAny();		
+		animalsGT50.ifPresent(a -> System.out.println(a.getName()));
+		
+		//Using collector
+		zoo.stream().filter(a -> a.getCount() > 50).collect(Collectors.toMap(a -> a.getName(), a-> a.getCount())).forEach((name, animals) -> System.out.println("Zoo has " + animals + " " + name));	
+		
 	}
 
 }

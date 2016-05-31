@@ -55,9 +55,10 @@ public class ZooStream {
 		System.out.println();
 		//Using optionals
 		Optional<Animal> animalsGT50 = zoo.parallelStream().filter(a -> a.getCount() > 50).findAny();		
-		animalsGT50.ifPresent(a -> System.out.println(a.getName()));
+		//animalsGT50.ifPresent(a -> System.out.println(a.getName()));
 		
 		//Using collector
+		List<Animal> collect = zoo.stream().filter(a -> a.getCount() > 50).collect(Collectors.toList());
 		zoo.stream().filter(a -> a.getCount() > 50).collect(Collectors.toMap(a -> a.getName(), a-> a.getCount())).forEach((name, animals) -> System.out.println("Zoo has " + animals + " " + name));	
 		
 	}

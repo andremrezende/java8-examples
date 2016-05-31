@@ -47,7 +47,8 @@ public class ZooStream {
 		zoo.add(duck);
 		
 		zoo.sort(Comparator.comparing(Animal::getCount));
-		zoo.stream().filter(a -> a.getCount() > 100).map(a -> a.getName()).forEach(System.out::println);
+		int sum = zoo.stream().filter(a -> a.getCount() > 100).mapToInt(a -> a.getCount()).sum();
+		System.out.println("Sum >> " + sum);
 	}
 
 }
